@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen } from './screens/HomeScreen';
@@ -8,10 +7,11 @@ const RootStack = createNativeStackNavigator({
   screens: {
     Home: {
       screen: HomeScreen,
-      options: { title: 'Welcome' },
+      options: { title: 'Book Explorer' },
     },
     Details: {
       screen: DetailsScreen,
+      options: { title: 'Book Details' },
     },
   },
 });
