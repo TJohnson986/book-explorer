@@ -1,12 +1,18 @@
-import { useNavigation } from '@react-navigation/native';
-import { Text, View } from 'react-native';
+import { BookDetail } from '../../components/BookDetail/BookDetail';
+import { ScrollView } from 'react-native';
+import { RouteProp } from '@react-navigation/native';
+import { BookResultProps } from '../../types/BookResult';
 
-export const DetailsScreen = () => {
-  const navigation = useNavigation();
+type DetailsScreenRouteProp = RouteProp<
+  { params: { item: BookResultProps } },
+  'params'
+>;
 
+export const DetailsScreen = ({ route }: { route: DetailsScreenRouteProp }) => {
+  const { item } = route.params;
   return (
-    <View>
-      <Text>Here's the details screen</Text>
-    </View>
+    <ScrollView>
+      <BookDetail {...item} />
+    </ScrollView>
   );
 };
