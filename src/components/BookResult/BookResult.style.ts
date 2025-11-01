@@ -9,6 +9,9 @@ export const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
+  resultCard: {
+    margin: 10,
+  },
   thumbnail: {
     width: 100,
     height: 150,
