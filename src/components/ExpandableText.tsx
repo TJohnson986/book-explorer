@@ -7,6 +7,7 @@ import {
   UIManager,
   Platform,
 } from 'react-native';
+import { useBookDetailsStyles } from './BookDetail/BookDetail.style';
 
 if (
   Platform.OS === 'android' &&
@@ -25,6 +26,7 @@ const ExpandableText: React.FC<ExpandableTextProps> = ({
   initialNumberOfLines = 3,
 }) => {
   const [expanded, setExpanded] = useState(false);
+  const styles = useBookDetailsStyles();
 
   const toggleExpand = () => {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
@@ -34,7 +36,10 @@ const ExpandableText: React.FC<ExpandableTextProps> = ({
   return (
     <View>
       <Pressable onPress={toggleExpand}>
-        <Text numberOfLines={expanded ? undefined : initialNumberOfLines}>
+        <Text
+          style={styles.text}
+          numberOfLines={expanded ? undefined : initialNumberOfLines}
+        >
           {text}
         </Text>
       </Pressable>

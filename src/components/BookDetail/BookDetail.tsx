@@ -1,6 +1,6 @@
 import { Alert, Image, Linking, View } from 'react-native';
 import { Button, Card, Chip, Text } from 'react-native-paper';
-import { styles } from './BookDetail.style';
+import { useBookDetailsStyles } from './BookDetail.style';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment } from '../../state/favoriteBooksSlice';
 import ExpandableText from '../ExpandableText';
@@ -9,6 +9,7 @@ import { RootState } from '@reduxjs/toolkit/query';
 import { BookResultProps } from '../../types/BookResult';
 
 export const BookDetail = (item: BookResultProps) => {
+  const styles = useBookDetailsStyles();
   const dispatch = useDispatch();
   const isFavorite = useSelector(
     (state: RootState) => state.favoriteBooks,
@@ -28,10 +29,10 @@ export const BookDetail = (item: BookResultProps) => {
   };
 
   return (
-    <Card style={{ margin: 10 }}>
+    <Card style={styles.container}>
       <Card.Title title="" right={() => <FavoriteIcon {...item} />} />
       <Card.Content>
-        <View style={styles.container}>
+        <View style={styles.contentContainer}>
           <Image
             style={styles.thumbnail}
             source={{ uri: item.volumeInfo.imageLinks.thumbnail }}
@@ -43,27 +44,31 @@ export const BookDetail = (item: BookResultProps) => {
               justifyContent: 'space-evenly',
             }}
           >
-            <Chip style={{ marginTop: 10 }}>
+            <Chip style={styles.chip}>
               {item.saleInfo.retailPrice
                 ? `$${item.saleInfo.retailPrice?.amount} USD`
                 : 'No Price Available'}
             </Chip>
-            <Chip style={{ marginTop: 10 }}>
+            <Chip style={styles.chip}>
               {item.saleInfo.isEbook ? 'Ebook Available!' : 'Hardcopy Only'}
             </Chip>
           </View>
           <View style={styles.bodyTextContainer}>
-            <Text variant="bodyLarge">
+            <Text style={styles.text} variant="bodyLarge">
               {item.volumeInfo.authors?.length === 1 ? 'Author: ' : 'Authors: '}
               {item.volumeInfo.authors?.join(', ')}
             </Text>
-            <Text variant="bodyLarge">Category:</Text>
-            <Text variant="bodyMedium">
+            <Text style={styles.text} variant="bodyLarge">
+              Category:
+            </Text>
+            <Text style={styles.text} variant="bodyMedium">
               {item.volumeInfo.categories
                 ? item.volumeInfo.categories.join(', ')
                 : 'No Categories Available'}
             </Text>
-            <Text variant="bodyLarge">Description:</Text>
+            <Text style={styles.text} variant="bodyLarge">
+              Description:
+            </Text>
             <ExpandableText
               text={item.volumeInfo.description}
               initialNumberOfLines={3}
