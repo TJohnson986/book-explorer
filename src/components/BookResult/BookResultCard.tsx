@@ -6,8 +6,11 @@ import { RootStackParamList } from '../../types/NavigationTypes';
 import { Card } from 'react-native-paper';
 import { styles } from './BookResult.style';
 import { BookResult } from './BookResult';
+import { increment } from '../../state/favoriteBooksSlice';
+import { useDispatch } from 'react-redux';
 
 export const BookResultCard = (item: BookResultProps) => {
+  const dispatch = useDispatch();
   const scheme = useColorScheme();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
@@ -15,6 +18,7 @@ export const BookResultCard = (item: BookResultProps) => {
   return (
     <Pressable
       onPress={() => navigation.navigate('Details', { item })}
+      onLongPress={() => dispatch(increment(item.id))}
       style={({ pressed }) => {
         if (scheme === 'dark') {
           return [
