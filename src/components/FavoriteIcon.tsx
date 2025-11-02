@@ -3,12 +3,13 @@ import { decrement, increment } from '../state/favoriteBooksSlice';
 import { Avatar } from 'react-native-paper';
 import { Pressable } from 'react-native';
 import { BookResultProps } from '../types/BookResult';
+import { RootState } from '../state/store';
 
 export const FavoriteIcon = (item: BookResultProps) => {
   const dispatch = useDispatch();
 
   const isFavorite = useSelector(
-    state => state.favoriteBooks,
+    (state: RootState) => state.favoriteBooks,
   ).favoriteBooks.includes(item.id);
 
   return (

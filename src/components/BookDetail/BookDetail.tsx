@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment } from '../../state/favoriteBooksSlice';
 import ExpandableText from '../ExpandableText';
 import { FavoriteIcon } from '../FavoriteIcon';
-import { RootState } from '@reduxjs/toolkit/query';
 import { BookResultProps } from '../../types/BookResult';
+import { RootState } from '../../state/store';
 
 export const BookDetail = (item: BookResultProps) => {
   const styles = useBookDetailsStyles();
@@ -50,7 +50,7 @@ export const BookDetail = (item: BookResultProps) => {
                 : 'No Price Available'}
             </Chip>
             <Chip style={styles.chip}>
-              {item.saleInfo.isEbook ? 'Ebook Available!' : 'Hardcopy Only'}
+              {item.saleInfo.isEbook ? 'Ebook Available!' : 'Hard copy Only'}
             </Chip>
           </View>
           <View style={styles.bodyTextContainer}>

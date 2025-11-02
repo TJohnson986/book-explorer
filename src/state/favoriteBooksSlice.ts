@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { BookResultProps } from '../types/BookResult';
 
 export const favoriteBooksSlice = createSlice({
   name: 'favoriteBooks',
   initialState: {
-    favoriteBooks: [] as string[],
+    favoriteBooks: [] as BookResultProps[],
   },
   reducers: {
     increment: (state, id) => {
