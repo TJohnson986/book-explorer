@@ -26,12 +26,23 @@ export const useBookDetailsStyles = () => {
       flexDirection: 'column',
       backgroundColor: theme.colors.card,
     },
+    headerText: {
+      color: theme.colors.text,
+      fontWeight: 'bold',
+      marginTop: 5,
+    },
     text: {
       color: theme.colors.text,
     },
-    tinyLogo: {
-      width: 50,
-      height: 50,
+    title: {
+      textAlign: 'center',
+      color: theme.colors.text,
+      marginBottom: 10,
+    },
+    subTitle: {
+      textAlign: 'center',
+      color: theme.colors.text,
+      marginBottom: 10,
     },
     thumbnail: {
       width: 200,
