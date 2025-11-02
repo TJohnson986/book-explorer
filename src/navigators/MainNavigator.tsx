@@ -48,7 +48,7 @@ const MainNavigator = ({ isDarkMode }: MainNavigatorProps) => {
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Overview' }}
+          options={{ title: 'Book Explorer' }}
         />
         <Stack.Screen
           name="Details"
