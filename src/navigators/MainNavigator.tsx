@@ -4,8 +4,10 @@ import {
   NavigationContainer,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import { HomeScreen } from '../screens/HomeScreen';
 import { DetailsScreen } from '../screens/DetailsScreen';
+import { FavoriteBooksScreen } from '../screens/FavoriteBooks';
 import {
   MainNavigatorProps,
   RootStackParamList,
@@ -37,25 +39,54 @@ export const CustomDarkTheme = {
   },
 };
 
+const Drawer = createDrawerNavigator();
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const MainNavigator = ({ isDarkMode }: MainNavigatorProps) => {
   const activeTheme = isDarkMode ? CustomDarkTheme : LightTheme;
 
-  return (
-    <NavigationContainer theme={activeTheme}>
+  const MainStack = () => {
+    return (
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
           name="Home"
           component={HomeScreen}
-          options={{ title: 'Book Explorer' }}
+          options={{ headerShown: false }}
         />
         <Stack.Screen
           name="Details"
           component={DetailsScreen}
-          options={{ title: 'Book Details' }}
+          options={{ title: '' }}
         />
       </Stack.Navigator>
+    );
+  };
+
+  return (
+    <NavigationContainer theme={activeTheme}>
+      <Drawer.Navigator
+        initialRouteName="Home"
+        defaultStatus="closed"
+        screenOptions={{
+          drawerType: 'front',
+          drawerStyle: { width: '75%' },
+          drawerPosition: 'right',
+          overlayColor: 'transparent',
+          swipeEdgeWidth: 50,
+          swipeEnabled: true,
+        }}
+      >
+        <Drawer.Screen
+          name="FavoriteBooks"
+          component={FavoriteBooksScreen}
+          options={{ title: 'Favorite Books' }}
+        />
+        <Drawer.Screen
+          name="Home"
+          component={MainStack}
+          options={{ title: 'Book Explorer' }}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 };
