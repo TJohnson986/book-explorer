@@ -8,9 +8,9 @@ const BookResultTitle = (item: BookResultProps) => {
   const { title } = item.volumeInfo;
   return (
     <Card.Title
-      style={{ marginBottom: -15 }}
       title={title}
       titleVariant="titleMedium"
+      subtitle={item.volumeInfo.subtitle}
       right={() => <FavoriteIcon {...item} />}
     />
   );

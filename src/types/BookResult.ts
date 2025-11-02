@@ -16,6 +16,7 @@ export interface BookResultProps {
     };
     previewLink: string;
     publishedDate: string;
+    subtitle: string;
     title: string;
   };
 }
