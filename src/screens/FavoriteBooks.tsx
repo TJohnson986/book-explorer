@@ -4,9 +4,10 @@ import { BookResultProps } from '../types/BookResult';
 import { useSelector } from 'react-redux';
 import { RootState } from '../state/store';
 import { useGetBooksQuery } from '../services/getBooks';
-import { styles } from './FavoriteIcon.style';
+import { useFavoriteBooksStyles } from './FavoriteBooks.style';
 
 export const FavoriteBooksScreen = () => {
+  const styles = useFavoriteBooksStyles();
   const favoriteBooksIds: String[] = useSelector(
     (state: RootState) => state.favoriteBooks.favoriteBooks,
   );
