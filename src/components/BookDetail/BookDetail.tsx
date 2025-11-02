@@ -54,11 +54,17 @@ export const BookDetail = (item: BookResultProps) => {
             </Chip>
           </View>
           <View style={styles.bodyTextContainer}>
-            <Text style={styles.text} variant="bodyLarge">
+            <Text style={styles.title} variant="titleLarge">
+              {item.volumeInfo.title}
+            </Text>
+            <Text style={styles.subTitle} variant="titleSmall">
+              {item.volumeInfo.subtitle}
+            </Text>
+            <Text style={styles.headerText} variant="bodyLarge">
               {item.volumeInfo.authors?.length === 1 ? 'Author: ' : 'Authors: '}
               {item.volumeInfo.authors?.join(', ')}
             </Text>
-            <Text style={styles.text} variant="bodyLarge">
+            <Text style={styles.headerText} variant="bodyLarge">
               Category:
             </Text>
             <Text style={styles.text} variant="bodyMedium">
@@ -66,7 +72,7 @@ export const BookDetail = (item: BookResultProps) => {
                 ? item.volumeInfo.categories.join(', ')
                 : 'No Categories Available'}
             </Text>
-            <Text style={styles.text} variant="bodyLarge">
+            <Text style={styles.headerText} variant="bodyLarge">
               Description:
             </Text>
             <ExpandableText
