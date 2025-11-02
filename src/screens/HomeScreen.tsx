@@ -41,7 +41,7 @@ export const HomeScreen = () => {
       <PaperProvider>
         <Portal>
           <Searchbar
-            placeholder="Search By Title"
+            placeholder="Search By Title or Author"
             onChangeText={setSearchQuery}
             style={styles.searchBar}
             value={searchQuery}
