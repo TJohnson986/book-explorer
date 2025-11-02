@@ -1,5 +1,5 @@
 import { BookDetail } from '../components/BookDetail/BookDetail';
-import { ScrollView, Text, View } from 'react-native';
+import { FlatList, Text, View } from 'react-native';
 import { BookResultProps } from '../types/BookResult';
 import { useSelector } from 'react-redux';
 import { RootState } from '../state/store';
@@ -20,9 +20,11 @@ export const FavoriteBooksScreen = () => {
   return (
     <>
       {data?.length ? (
-        <ScrollView>
-          {data?.length && data?.map(item => <BookDetail {...item} />)}
-        </ScrollView>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => <BookDetail {...item} />}
+          keyExtractor={item => item.id}
+        />
       ) : (
         <View style={styles.noBooksContainer}>
           <Text style={styles.noBooksText}>No favorite books added yet.</Text>
